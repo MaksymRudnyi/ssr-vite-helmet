@@ -20,14 +20,17 @@ const createServer = async () => {
   } else {
     app.use((await import("compression")).default())
     app.use(
-      (await import("serve-static")).default(path.resolve("dist/client"), {
+      (await import("serve-static")).default(path.resolve("/dist/client/assets"), {
         index: false,
       }),
     )
   }
 
+  app.use('/dist/client/assets', express.static(path.resolve('dist/client/assets')));
   app.use("*", async (req, res, next) => {
     const url = req.originalUrl
+
+    console.log('url', url)
     let template, render
 
     try {
@@ -94,9 +97,9 @@ const createServer = async () => {
     }
   })
 
-  app.listen(5174)
+  app.listen(process.env.PORT)
 }
 
 createServer().then(() => {
-  console.log("http://localhost:5174")
+  console.log("http://localhost:3000")
 })
