@@ -64,7 +64,6 @@ const createServer = async () => {
       // const response = await fetch(`https://rickandmortyapi.com/api/character`)
       // const result = await response.json()
 
-      // console.log('data', result.results)
       const fullUrl = req.protocol + '://' + req.get('host') + req.originalUrl;
 
       const {html, helmet} = await render({path: url, data: result, fullUrl})
