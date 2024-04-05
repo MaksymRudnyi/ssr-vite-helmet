@@ -9,7 +9,7 @@
     "build:client": "vite build --ssrManifest --outDir dist/client",
     "build:server": "vite build --ssr src/entry-server.jsx --outDir dist/server",
     "preview": "cross-env NODE_ENV=production node index.js",
-    "start": "node index.js"
+    "start": "cross-env NODE_ENV=production node index.js"
   },
   "dependencies": {
     "compression": "^1.7.4",
